@@ -20,11 +20,19 @@ function Main() {
         style={{
           background: `rgb(${config.bgColor}, ${config.bgColor}, ${config.bgColor})`,
           lineHeight: config.lineHeight,
+          fontSize: config.fontSize,
         }}
       >
-        {lines.map((line, i) => (
-          <Breaker key={i} text={line} />
-        ))}
+        <div className="breaker-container">
+          {lines.map((line, i) => (
+            <Breaker
+              key={i}
+              text={line}
+              animate={true}
+              direction={i % 2 === 0 ? "l" : "r"}
+            />
+          ))}
+        </div>
       </main>
       <ControlBar />
     </>

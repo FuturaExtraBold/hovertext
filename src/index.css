@@ -17,8 +17,23 @@ main {
   width: 100%;
 }
 
+.breaker-container {
+  width: 100vw;
+  overflow: hidden;
+}
+
+.breaker-wrapper {
+  overflow: visible;
+  width: 100%;
+}
+
+.breaker-track {
+  display: flex;
+  width: max-content;
+}
+
 .breaker {
-  text-align: center;
+  white-space: nowrap;
   user-select: none;
   -webkit-user-select: none;
 }

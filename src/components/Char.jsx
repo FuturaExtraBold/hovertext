@@ -18,7 +18,8 @@ export function Char({ char }) {
       Math.pow(mousePos.x - charX, 2) + Math.pow(mousePos.y - charY, 2),
     );
 
-    const proximity = 1 - Math.min(distance, config.strength) / config.strength;
+    const linearProximity = 1 - Math.min(distance, config.radius) / config.radius;
+    const proximity = Math.pow(linearProximity, 1 / config.strength);
 
     const weight = Math.round(100 + proximity * (config.boldness - 100));
     const colorValue = Math.round(
