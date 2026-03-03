@@ -56,6 +56,7 @@ function Main() {
           background: `rgb(${config.bgColor}, ${config.bgColor}, ${config.bgColor})`,
           lineHeight: config.lineHeight,
           fontSize: config.fontSize,
+          fontFamily: `"${config.fontFamily}", sans-serif`,
           ...layoutStyles[scenario.layout],
         }}
       >

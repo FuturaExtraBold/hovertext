@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import { scenarios, defaultScenario } from "../scenarios";
 import { useMousePosition } from "../hooks/useMousePosition";
+import { defaultScenario, scenarios } from "../scenarios";
 
 const AppContext = createContext(null);
 

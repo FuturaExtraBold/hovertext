@@ -1,3 +1,5 @@
+export const fontOptions = ["Chivo", "Roboto", "Montserrat", "Bitter"];
+
 export const configRanges = {
   bgColor: { min: 0, max: 255, step: 1 },
   textColor: { min: 0, max: 255, step: 1 },
@@ -22,4 +24,5 @@ export const configLabels = {
   animationSpeed: "Speed",
   fontSize: "Font Size",
   wordGap: "Word Gap",
+  fontFamily: "Font",
 };

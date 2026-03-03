@@ -14,7 +14,12 @@ function BreakerContent({ text, textDelimiter }) {
   );
 }
 
-export function Breaker({ text, animate = false, direction = "l", clickable = false }) {
+export function Breaker({
+  text,
+  animate = false,
+  direction = "l",
+  clickable = false,
+}) {
   const { config, setHideCursor } = useApp();
   const { textDelimiter, animationSpeed } = config;
   const trackRef = useRef(null);

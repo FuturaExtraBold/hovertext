@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background: #111;
-  font-family: "Chivo", sans-serif;
+  font-family: "Bitter", sans-serif;
   font-weight: 100;
   font-size: 128px;
   color: #111;
@@ -22,7 +22,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 60px);
+  height: 100vh;
   width: 100%;
   cursor: none;
 }
@@ -61,15 +61,14 @@ main {
 
 .control-bar {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
+  bottom: 20px;
+  left: 20px;
   background: white;
+  border: 1px solid black;
+  padding: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
+  flex-direction: column;
+  gap: 8px;
   font-size: 14px;
   font-weight: 400;
   color: #333;
@@ -78,6 +77,7 @@ main {
 .control-bar label {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
 }
 
