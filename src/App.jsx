@@ -1,38 +1,65 @@
 import { Breaker } from "./components/Breaker";
 import { ControlBar } from "./components/ControlBar";
+import { Cursor } from "./components/Cursor";
 import { AppProvider, useApp } from "./context/AppContext";
 
-const lines = [
-  "ALPHA BRAVO CHARLIE DELTA ECHO",
-  "FOXTROT GOLF HOTEL INDIA JULIET",
-  "KILO LIMA MIKE NOVEMBER OSCAR PAPA",
-  "QUEBEC ROMEO SIERRA TANGO UNIFORM",
-  "VICTOR WHISKEY XRAY YANKEE ZULU",
-];
-
 function Main() {
-  const { config } = useApp();
+  const { config, scenario } = useApp();
+
+  const layoutStyles = {
+    center: {
+      justifyContent: "center",
+    },
+    top: {
+      justifyContent: "flex-start",
+      paddingTop: 60,
+    },
+  };
+
+  const renderContent = () => {
+    if (scenario.words) {
+      return (
+        <div className="words-container" style={{ gap: config.wordGap }}>
+          {scenario.words.map((word, i) => (
+            <Breaker
+              key={i}
+              text={word}
+              animate={scenario.animate}
+              direction={i % 2 === 0 ? "l" : "r"}
+              clickable
+            />
+          ))}
+        </div>
+      );
+    }
+
+    return (
+      <div className="breaker-container">
+        {scenario.lines.map((line, i) => (
+          <Breaker
+            key={i}
+            text={line}
+            animate={scenario.animate}
+            direction={i % 2 === 0 ? "l" : "r"}
+          />
+        ))}
+      </div>
+    );
+  };
 
   return (
     <>
+      <Cursor />
       <main
         className="main"
         style={{
           background: `rgb(${config.bgColor}, ${config.bgColor}, ${config.bgColor})`,
           lineHeight: config.lineHeight,
           fontSize: config.fontSize,
+          ...layoutStyles[scenario.layout],
         }}
       >
-        <div className="breaker-container">
-          {lines.map((line, i) => (
-            <Breaker
-              key={i}
-              text={line}
-              animate={true}
-              direction={i % 2 === 0 ? "l" : "r"}
-            />
-          ))}
-        </div>
+        {renderContent()}
       </main>
       <ControlBar />
     </>

@@ -8,6 +8,15 @@ body {
   line-height: 0.695;
 }
 
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  font-size: 128px;
+  color: #333;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -15,11 +24,23 @@ main {
   align-items: center;
   height: calc(100vh - 60px);
   width: 100%;
+  cursor: none;
+}
+
+.breaker.clickable {
+  cursor: pointer;
 }
 
 .breaker-container {
   width: 100vw;
   overflow: hidden;
+}
+
+.words-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .breaker-wrapper {
@@ -63,4 +84,13 @@ main {
 .control-bar input[type="range"] {
   width: 90px;
   accent-color: #666;
+}
+
+.control-bar select {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  color: #333;
+  font-size: 14px;
 }

@@ -1,19 +1,40 @@
 import { createContext, useContext, useState } from "react";
-import { defaultConfig } from "../config";
+import { scenarios, defaultScenario } from "../scenarios";
 import { useMousePosition } from "../hooks/useMousePosition";
 
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const [config, setConfig] = useState(defaultConfig);
+  const [scenarioKey, setScenarioKey] = useState(defaultScenario);
+  const [config, setConfig] = useState(scenarios[defaultScenario].config);
+  const [hideCursor, setHideCursor] = useState(false);
   const mousePos = useMousePosition();
+
+  const scenario = scenarios[scenarioKey];
 
   const updateConfig = (key, value) => {
     setConfig((prev) => ({ ...prev, [key]: value }));
   };
 
+  const switchScenario = (key) => {
+    setScenarioKey(key);
+    setConfig(scenarios[key].config);
+  };
+
   return (
-    <AppContext.Provider value={{ config, setConfig, updateConfig, mousePos }}>
+    <AppContext.Provider
+      value={{
+        config,
+        setConfig,
+        updateConfig,
+        mousePos,
+        scenario,
+        scenarioKey,
+        switchScenario,
+        hideCursor,
+        setHideCursor,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
