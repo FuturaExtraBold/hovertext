@@ -20,9 +20,9 @@ export function Char({ char }) {
 
     const proximity = 1 - Math.min(distance, config.strength) / config.strength;
 
-    const weight = Math.round(100 + proximity * config.boldness);
+    const weight = Math.round(100 + proximity * (config.boldness - 100));
     const colorValue = Math.round(
-      config.textColor + proximity * (255 - config.textColor),
+      config.textColor + proximity * (config.textColorHover - config.textColor),
     );
 
     return { fontWeight: weight, colorValue };

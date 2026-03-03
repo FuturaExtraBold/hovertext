@@ -1,6 +1,6 @@
-import { AppProvider, useApp } from "./context/AppContext";
 import { Breaker } from "./components/Breaker";
 import { ControlBar } from "./components/ControlBar";
+import { AppProvider, useApp } from "./context/AppContext";
 
 const lines = [
   "ALPHA BRAVO CHARLIE DELTA ECHO",

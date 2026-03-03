@@ -1,5 +1,5 @@
+import { configLabels, configRanges } from "../config";
 import { useApp } from "../context/AppContext";
-import { configRanges, configLabels } from "../config";
 
 export function ControlBar() {
   const { config, updateConfig } = useApp();
