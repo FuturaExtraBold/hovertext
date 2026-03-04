@@ -9,6 +9,7 @@ const defaultConfig = {
   strength: 2,
   boldness: 900,
   lineHeight: 0.9,
+  tracking: -0.02,
   animationSpeed: 10,
   fontSize: 192,
   fontFamily: "Bitter",
@@ -19,6 +20,8 @@ const AppContext = createContext(null);
 export function AppProvider({ children }) {
   const [config, setConfig] = useState(defaultConfig);
   const [hideCursor, setHideCursor] = useState(false);
+  const [singleLine, setSingleLine] = useState(true);
+  const [animateLines, setAnimateLines] = useState(false);
   const mousePos = useMousePosition();
 
   const updateConfig = (key, value) => {
@@ -34,6 +37,10 @@ export function AppProvider({ children }) {
         mousePos,
         hideCursor,
         setHideCursor,
+        singleLine,
+        setSingleLine,
+        animateLines,
+        setAnimateLines,
       }}
     >
       {children}

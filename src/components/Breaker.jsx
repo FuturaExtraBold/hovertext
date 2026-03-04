@@ -44,9 +44,11 @@ export function Breaker({ text, animate = false, direction = "l" }) {
 
   if (!animate) {
     return (
-      <span className="breaker">
-        <BreakerContent text={text} />
-      </span>
+      <div className="breaker-line">
+        <span className="breaker">
+          <BreakerContent text={text} />
+        </span>
+      </div>
     );
   }
 

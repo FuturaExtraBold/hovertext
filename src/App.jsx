@@ -13,8 +13,10 @@ const lines = [
   "VICTOR WHISKEY XRAY YANKEE ZULU",
 ];
 
+const singleLineText = "Juliet Bravo Hotel";
+
 function Main() {
-  const { config } = useApp();
+  const { config, singleLine, animateLines } = useApp();
   const mainRef = useRef(null);
 
   const getBackground = () => {
@@ -31,6 +33,29 @@ function Main() {
     }
   }, [config.bgColor]);
 
+  const renderContent = () => {
+    if (singleLine) {
+      return (
+        <div className="single-line-container">
+          <Breaker text={singleLineText} animate={false} />
+        </div>
+      );
+    }
+
+    return (
+      <div className="breaker-container">
+        {lines.map((line, i) => (
+          <Breaker
+            key={i}
+            text={line}
+            animate={animateLines}
+            direction={i % 2 === 0 ? "l" : "r"}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <>
       <Cursor />
@@ -40,21 +65,13 @@ function Main() {
         style={{
           background: getBackground(),
           lineHeight: config.lineHeight,
+          letterSpacing: `${config.tracking}em`,
           fontSize: config.fontSize,
           fontFamily: `"${config.fontFamily}", sans-serif`,
           justifyContent: "center",
         }}
       >
-        <div className="breaker-container">
-          {lines.map((line, i) => (
-            <Breaker
-              key={i}
-              text={line}
-              animate={true}
-              direction={i % 2 === 0 ? "l" : "r"}
-            />
-          ))}
-        </div>
+        {renderContent()}
       </main>
       <ControlBar />
     </>

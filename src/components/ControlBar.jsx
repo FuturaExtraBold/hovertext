@@ -2,7 +2,15 @@ import { configLabels, configRanges, fontOptions } from "../config";
 import { useApp } from "../context/AppContext";
 
 export function ControlBar() {
-  const { config, updateConfig, setHideCursor } = useApp();
+  const {
+    config,
+    updateConfig,
+    setHideCursor,
+    singleLine,
+    setSingleLine,
+    animateLines,
+    setAnimateLines,
+  } = useApp();
 
   return (
     <div
@@ -10,6 +18,24 @@ export function ControlBar() {
       onMouseEnter={() => setHideCursor(true)}
       onMouseLeave={() => setHideCursor(false)}
     >
+      <label>
+        Single Line
+        <input
+          type="checkbox"
+          checked={singleLine}
+          onChange={(e) => setSingleLine(e.target.checked)}
+        />
+      </label>
+      {!singleLine && (
+        <label>
+          Animate
+          <input
+            type="checkbox"
+            checked={animateLines}
+            onChange={(e) => setAnimateLines(e.target.checked)}
+          />
+        </label>
+      )}
       <label>
         {configLabels.fontFamily}
         <select
