@@ -22,6 +22,7 @@ export function AppProvider({ children }) {
   const [hideCursor, setHideCursor] = useState(false);
   const [singleLine, setSingleLine] = useState(true);
   const [animateLines, setAnimateLines] = useState(false);
+  const [uppercase, setUppercase] = useState(true);
   const mousePos = useMousePosition();
 
   const updateConfig = (key, value) => {
@@ -41,6 +42,8 @@ export function AppProvider({ children }) {
         setSingleLine,
         animateLines,
         setAnimateLines,
+        uppercase,
+        setUppercase,
       }}
     >
       {children}

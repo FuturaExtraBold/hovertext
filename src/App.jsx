@@ -6,17 +6,17 @@ import { Cursor } from "./components/Cursor";
 import { AppProvider, useApp } from "./context/AppContext";
 
 const lines = [
-  "ALPHA BRAVO CHARLIE DELTA ECHO",
-  "FOXTROT GOLF HOTEL INDIA JULIET",
-  "KILO LIMA MIKE NOVEMBER OSCAR PAPA",
-  "QUEBEC ROMEO SIERRA TANGO UNIFORM",
-  "VICTOR WHISKEY XRAY YANKEE ZULU",
+  "Alpha Bravo Charlie Delta Echo",
+  "Foxtrot Golf Hotel India Juliet",
+  "Kilo Lima Mike November Oscar Papa",
+  "Quebec Romeo Sierra Tango Uniform",
+  "Victor Whiskey Xray Yankee Zulu",
 ];
 
 const singleLineText = "Juliet Bravo Hotel";
 
 function Main() {
-  const { config, singleLine, animateLines } = useApp();
+  const { config, singleLine, animateLines, uppercase } = useApp();
   const mainRef = useRef(null);
 
   const getBackground = () => {
@@ -68,6 +68,7 @@ function Main() {
           letterSpacing: `${config.tracking}em`,
           fontSize: config.fontSize,
           fontFamily: `"${config.fontFamily}", sans-serif`,
+          textTransform: uppercase ? "uppercase" : "none",
           justifyContent: "center",
         }}
       >

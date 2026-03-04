@@ -14,7 +14,12 @@ function BreakerContent({ text }) {
   );
 }
 
-export function Breaker({ text, animate = false, direction = "l", duplicate = true }) {
+export function Breaker({
+  text,
+  animate = false,
+  direction = "l",
+  duplicate = true,
+}) {
   const { config } = useApp();
   const { animationSpeed } = config;
   const trackRef = useRef(null);

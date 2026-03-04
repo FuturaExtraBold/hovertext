@@ -10,6 +10,8 @@ export function ControlBar() {
     setSingleLine,
     animateLines,
     setAnimateLines,
+    uppercase,
+    setUppercase,
   } = useApp();
 
   return (
@@ -36,6 +38,14 @@ export function ControlBar() {
           />
         </label>
       )}
+      <label>
+        Uppercase
+        <input
+          type="checkbox"
+          checked={uppercase}
+          onChange={(e) => setUppercase(e.target.checked)}
+        />
+      </label>
       <label>
         {configLabels.fontFamily}
         <select
