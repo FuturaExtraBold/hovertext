@@ -48,16 +48,16 @@ export const scenarios = {
   pastime: {
     name: "Pastime",
     config: {
-      bgColor: 30,
-      textColor: 60,
+      bgColor: 240,
+      textColor: 250,
       textColorHover: 255,
-      radius: 200,
-      strength: 1,
+      radius: 300,
+      strength: 1.5,
       boldness: 900,
       lineHeight: 1,
       textDelimiter: " • ",
-      animationSpeed: 2,
-      fontSize: 48,
+      animationSpeed: 12,
+      fontSize: 128,
       wordGap: 0,
       fontFamily: "Roboto",
     },
@@ -148,4 +148,4 @@ export const scenarios = {
   },
 };
 
-export const defaultScenario = "playground";
+export const defaultScenario = "pastime";
