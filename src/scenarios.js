@@ -13,7 +13,7 @@ export const scenarios = [
     id: "phoenetic-alphabet",
     name: "Phoenetic",
     config: {
-      fontFamily: "Bitter",
+      fontFamily: "Chivo",
     },
     singleLine: false,
     animateLines: true,
