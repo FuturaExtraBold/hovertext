@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Breaker } from "./components/Breaker";
 import { ControlBar } from "./components/ControlBar";
 import { Cursor } from "./components/Cursor";
+import { HalftoneImage } from "./components/HalftoneImage";
 import { AppProvider, useApp } from "./context/AppContext";
 
 function TeamLogo({ team }) {
@@ -13,7 +14,7 @@ function TeamLogo({ team }) {
       gsap.fromTo(
         logoRef.current,
         { opacity: 0 },
-        { opacity: 0.1, duration: 0.5, ease: "power2.out" }
+        { opacity: 0.1, duration: 0.5, ease: "power2.out" },
       );
     }
   }, [team]);
@@ -65,7 +66,9 @@ function Main() {
           {scenario.teams.map((team, i) => (
             <Breaker
               key={team.name}
-              text={team.players.join(config.textDelimiter) + config.textDelimiter}
+              text={
+                team.players.join(config.textDelimiter) + config.textDelimiter
+              }
               animate={scenario.animate}
               direction={i % 2 === 0 ? "l" : "r"}
               clickable
@@ -110,6 +113,7 @@ function Main() {
     <>
       <Cursor />
       {hoveredTeam && <TeamLogo team={hoveredTeam} />}
+      <HalftoneImage />
       <main
         ref={mainRef}
         className="main"

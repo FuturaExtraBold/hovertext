@@ -65,7 +65,7 @@ export const scenarios = {
       {
         name: "Diamondbacks",
         color: "#A71930",
-        logo: "/src/assets/logos/diamondbacks.svg",
+        logo: "/assets/logos/diamondbacks.svg",
         players: [
           "PERDOMO",
           "MARTE",
@@ -81,7 +81,7 @@ export const scenarios = {
       {
         name: "Rockies",
         color: "#33006F",
-        logo: "/src/assets/logos/rockies.svg",
+        logo: "/assets/logos/rockies.svg",
         players: [
           "TOVAR",
           "MONIAK",
@@ -97,7 +97,7 @@ export const scenarios = {
       {
         name: "Dodgers",
         color: "#005A9C",
-        logo: "/src/assets/logos/dodgers.svg",
+        logo: "/assets/logos/dodgers.svg",
         players: [
           "OHTANI",
           "TUCKER",
@@ -113,7 +113,8 @@ export const scenarios = {
       {
         name: "Padres",
         color: "#2F241D",
-        logo: "/src/assets/logos/padres.svg",
+        logo: "/assets/logos/padres.svg",
+        playerImage: "/assets/players/padres/bogaerts.jpeg",
         players: [
           "BOGAERTS",
           "MERRILL",
@@ -129,7 +130,7 @@ export const scenarios = {
       {
         name: "Giants",
         color: "#FD5A1E",
-        logo: "/src/assets/logos/giants.svg",
+        logo: "/assets/logos/giants.svg",
         players: [
           "ARRAEZ",
           "BADER",
