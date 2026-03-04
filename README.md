@@ -1,17 +1,47 @@
-# React + Vite
+# Hovertext Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive kinetic-typography playground where text responds to your cursor with weight and color shifts.
 
-Currently, two official plugins are available:
+## What It Does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Renders multiple scrolling text lines (or a single centered line) and lets you:
 
-## React Compiler
+- Move the cursor to inflate character weight and brighten nearby letters
+- Toggle between single-line and multi-line layouts
+- Animate line tracks with a continuous marquee effect
+- Adjust typography controls (font, size, tracking, line height, radius, strength)
+- Change background and text colors in real time
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Quick Start
 
-## Expanding the ESLint configuration
+```bash
+# Install dependencies
+npm install
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# hovertext
+# Dev server (http://localhost:5173)
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Tech Stack
+
+- **React** - UI framework
+- **GSAP** - Animation library
+- **Vite** - Build tool
+
+## Project Structure
+
+```text
+src/
+├── components/     # Breaker, Char, Cursor, ControlBar, ErrorBoundary
+├── context/        # App context and hooks
+├── hooks/          # Mouse position tracking
+├── styles/         # Global CSS
+├── config.js       # Control ranges and labels
+└── App.jsx         # Main app
+```
