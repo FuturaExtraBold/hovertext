@@ -37,7 +37,7 @@ function Main() {
     if (singleLine) {
       return (
         <div className="single-line-container">
-          <Breaker text={singleLineText} animate={false} />
+          <Breaker text={singleLineText} animate={false} duplicate={false} />
         </div>
       );
     }

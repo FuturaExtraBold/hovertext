@@ -14,14 +14,16 @@ function BreakerContent({ text }) {
   );
 }
 
-export function Breaker({ text, animate = false, direction = "l" }) {
+export function Breaker({ text, animate = false, direction = "l", duplicate = true }) {
   const { config } = useApp();
   const { animationSpeed } = config;
   const trackRef = useRef(null);
   const tweenRef = useRef(null);
+  const initializedRef = useRef(false);
 
+  // Initialize the tween once
   useEffect(() => {
-    if (!animate || !trackRef.current) return;
+    if (!trackRef.current || initializedRef.current) return;
 
     const startX = direction === "r" ? -50 : 0;
     const endX = direction === "r" ? 0 : -50;
@@ -33,24 +35,36 @@ export function Breaker({ text, animate = false, direction = "l" }) {
       duration: 1000 / animationSpeed,
       ease: "none",
       repeat: -1,
+      paused: !animate,
     });
+
+    initializedRef.current = true;
 
     return () => {
       if (tweenRef.current) {
         tweenRef.current.kill();
+        tweenRef.current = null;
+        initializedRef.current = false;
       }
     };
-  }, [animate, direction, animationSpeed]);
+  }, [direction]);
 
-  if (!animate) {
-    return (
-      <div className="breaker-line">
-        <span className="breaker">
-          <BreakerContent text={text} />
-        </span>
-      </div>
-    );
-  }
+  // Handle animate toggle - pause/resume
+  useEffect(() => {
+    if (!tweenRef.current) return;
+
+    if (animate) {
+      tweenRef.current.resume();
+    } else {
+      tweenRef.current.pause();
+    }
+  }, [animate]);
+
+  // Handle speed changes
+  useEffect(() => {
+    if (!tweenRef.current) return;
+    tweenRef.current.duration(1000 / animationSpeed);
+  }, [animationSpeed]);
 
   return (
     <div className="breaker-wrapper">
@@ -58,10 +72,14 @@ export function Breaker({ text, animate = false, direction = "l" }) {
         <span className="breaker">
           <BreakerContent text={text} />
         </span>
-        &nbsp;
-        <span className="breaker">
-          <BreakerContent text={text} />
-        </span>
+        {duplicate && (
+          <>
+            &nbsp;
+            <span className="breaker">
+              <BreakerContent text={text} />
+            </span>
+          </>
+        )}
       </div>
     </div>
   );

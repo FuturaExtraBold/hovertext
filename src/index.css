@@ -67,6 +67,13 @@ main {
   -webkit-user-select: none;
 }
 
+.char {
+  display: inline-block;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 .breaker-line {
   width: 100%;
   text-align: center;

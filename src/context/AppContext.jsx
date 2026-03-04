@@ -6,11 +6,11 @@ const defaultConfig = {
   textColor: 200,
   textColorHover: 0,
   radius: 400,
-  strength: 2,
+  strength: 1,
   boldness: 900,
   lineHeight: 0.9,
   tracking: -0.02,
-  animationSpeed: 10,
+  animationSpeed: 20,
   fontSize: 192,
   fontFamily: "Bitter",
 };
