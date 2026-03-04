@@ -52,7 +52,6 @@ main {
 }
 
 .breaker-wrapper {
-  overflow: visible;
   width: 100%;
 }
 
@@ -71,12 +70,6 @@ main {
   display: inline-block;
   transform: translateZ(0);
   backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.breaker-line {
-  width: 100%;
-  text-align: center;
 }
 
 .control-bar {
@@ -119,4 +112,22 @@ main {
   background: white;
   color: #333;
   font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .breaker-track {
+    animation: none !important;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+
+  main {
+    cursor: auto;
+  }
+
+  .char {
+    transition: none !important;
+  }
 }

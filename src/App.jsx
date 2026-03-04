@@ -3,7 +3,8 @@ import { useEffect, useRef } from "react";
 import { Breaker } from "./components/Breaker";
 import { ControlBar } from "./components/ControlBar";
 import { Cursor } from "./components/Cursor";
-import { AppProvider, useApp } from "./context/AppContext";
+import { AppProvider } from "./context/AppContext";
+import { useApp } from "./context/useApp";
 
 const lines = [
   "Alpha Bravo Charlie Delta Echo",

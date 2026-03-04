@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { useMousePosition } from "../hooks/useMousePosition";
+import { useCallback, useMemo, useState } from "react";
+import { AppContext } from "./context";
 
 const defaultConfig = {
   bgColor: 255,
@@ -15,46 +15,36 @@ const defaultConfig = {
   fontFamily: "Bitter",
 };
 
-const AppContext = createContext(null);
-
 export function AppProvider({ children }) {
   const [config, setConfig] = useState(defaultConfig);
   const [hideCursor, setHideCursor] = useState(false);
   const [singleLine, setSingleLine] = useState(true);
   const [animateLines, setAnimateLines] = useState(false);
   const [uppercase, setUppercase] = useState(true);
-  const mousePos = useMousePosition();
 
-  const updateConfig = (key, value) => {
+  const updateConfig = useCallback((key, value) => {
     setConfig((prev) => ({ ...prev, [key]: value }));
-  };
+  }, []);
+
+  const contextValue = useMemo(
+    () => ({
+      config,
+      updateConfig,
+      hideCursor,
+      setHideCursor,
+      singleLine,
+      setSingleLine,
+      animateLines,
+      setAnimateLines,
+      uppercase,
+      setUppercase,
+    }),
+    [config, hideCursor, singleLine, animateLines, uppercase, updateConfig]
+  );
 
   return (
-    <AppContext.Provider
-      value={{
-        config,
-        setConfig,
-        updateConfig,
-        mousePos,
-        hideCursor,
-        setHideCursor,
-        singleLine,
-        setSingleLine,
-        animateLines,
-        setAnimateLines,
-        uppercase,
-        setUppercase,
-      }}
-    >
+    <AppContext.Provider value={contextValue}>
       {children}
     </AppContext.Provider>
   );
-}
-
-export function useApp() {
-  const context = useContext(AppContext);
-  if (!context) {
-    throw new Error("useApp must be used within AppProvider");
-  }
-  return context;
 }

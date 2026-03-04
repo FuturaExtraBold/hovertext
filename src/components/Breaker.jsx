@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 import { Char } from "./Char";
 
 function BreakerContent({ text }) {
@@ -27,6 +27,8 @@ export function Breaker({
   const initializedRef = useRef(false);
 
   // Initialize the tween once
+  // Note: animationSpeed is intentionally omitted from deps - speed changes
+  // are handled by a separate effect to avoid recreating the tween
   useEffect(() => {
     if (!trackRef.current || initializedRef.current) return;
 

@@ -1,5 +1,5 @@
 import { configLabels, configRanges, fontOptions } from "../config";
-import { useApp } from "../context/AppContext";
+import { useApp } from "../context/useApp";
 
 export function ControlBar() {
   const {
@@ -17,6 +17,8 @@ export function ControlBar() {
   return (
     <div
       className="control-bar"
+      role="region"
+      aria-label="Typography controls"
       onMouseEnter={() => setHideCursor(true)}
       onMouseLeave={() => setHideCursor(false)}
     >
@@ -26,6 +28,7 @@ export function ControlBar() {
           type="checkbox"
           checked={singleLine}
           onChange={(e) => setSingleLine(e.target.checked)}
+          aria-label="Toggle single line mode"
         />
       </label>
       {!singleLine && (
@@ -35,6 +38,7 @@ export function ControlBar() {
             type="checkbox"
             checked={animateLines}
             onChange={(e) => setAnimateLines(e.target.checked)}
+            aria-label="Toggle line animation"
           />
         </label>
       )}
@@ -44,6 +48,7 @@ export function ControlBar() {
           type="checkbox"
           checked={uppercase}
           onChange={(e) => setUppercase(e.target.checked)}
+          aria-label="Toggle uppercase text"
         />
       </label>
       <label>
@@ -51,6 +56,7 @@ export function ControlBar() {
         <select
           value={config.fontFamily}
           onChange={(e) => updateConfig("fontFamily", e.target.value)}
+          aria-label="Select font family"
         >
           {fontOptions.map((font) => (
             <option key={font} value={font}>
@@ -69,6 +75,10 @@ export function ControlBar() {
             step={configRanges[key].step}
             value={config[key]}
             onChange={(e) => updateConfig(key, Number(e.target.value))}
+            aria-label={`Adjust ${configLabels[key]}`}
+            aria-valuemin={configRanges[key].min}
+            aria-valuemax={configRanges[key].max}
+            aria-valuenow={config[key]}
           />
         </label>
       ))}
