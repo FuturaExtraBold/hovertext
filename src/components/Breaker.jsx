@@ -3,11 +3,11 @@ import { useEffect, useRef } from "react";
 import { useApp } from "../context/AppContext";
 import { Char } from "./Char";
 
-function BreakerContent({ text, textDelimiter }) {
+function BreakerContent({ text }) {
   return (
     <>
       {text.split("").map((char, i) => {
-        const displayChar = char === " " ? textDelimiter : char;
+        const displayChar = char === " " ? "\u00A0" : char;
         return <Char key={i} char={displayChar} />;
       })}
     </>
@@ -19,8 +19,9 @@ export function Breaker({
   animate = false,
   direction = "l",
   clickable = false,
+  team = null,
 }) {
-  const { config, setHideCursor } = useApp();
+  const { config, setHideCursor, setHoveredTeam } = useApp();
   const { textDelimiter, animationSpeed } = config;
   const trackRef = useRef(null);
   const tweenRef = useRef(null);
@@ -51,15 +52,21 @@ export function Breaker({
 
   const hoverHandlers = clickable
     ? {
-        onMouseEnter: () => setHideCursor(true),
-        onMouseLeave: () => setHideCursor(false),
+        onMouseEnter: () => {
+          setHideCursor(true);
+          if (team) setHoveredTeam(team);
+        },
+        onMouseLeave: () => {
+          setHideCursor(false);
+          if (team) setHoveredTeam(null);
+        },
       }
     : {};
 
   if (!animate) {
     return (
       <span className={breakerClass} {...hoverHandlers}>
-        <BreakerContent text={text} textDelimiter={textDelimiter} />
+        <BreakerContent text={text} />
       </span>
     );
   }
@@ -68,11 +75,11 @@ export function Breaker({
     <div className="breaker-wrapper">
       <div className="breaker-track" ref={trackRef}>
         <span className={breakerClass} {...hoverHandlers}>
-          <BreakerContent text={text} textDelimiter={textDelimiter} />
+          <BreakerContent text={text} />
         </span>
         &nbsp;
         <span className={breakerClass} {...hoverHandlers}>
-          <BreakerContent text={text} textDelimiter={textDelimiter} />
+          <BreakerContent text={text} />
         </span>
       </div>
     </div>

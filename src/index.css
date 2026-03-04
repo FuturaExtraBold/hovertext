@@ -17,6 +17,22 @@ body {
   z-index: 9999;
 }
 
+.team-logo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-85%, -50%) rotate(-10deg);
+  height: 125vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.team-logo img {
+  height: 100%;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
 main {
   display: flex;
   flex-direction: column;

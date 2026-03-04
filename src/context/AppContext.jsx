@@ -8,6 +8,7 @@ export function AppProvider({ children }) {
   const [scenarioKey, setScenarioKey] = useState(defaultScenario);
   const [config, setConfig] = useState(scenarios[defaultScenario].config);
   const [hideCursor, setHideCursor] = useState(false);
+  const [hoveredTeam, setHoveredTeam] = useState(null);
   const mousePos = useMousePosition();
 
   const scenario = scenarios[scenarioKey];
@@ -33,6 +34,8 @@ export function AppProvider({ children }) {
         switchScenario,
         hideCursor,
         setHideCursor,
+        hoveredTeam,
+        setHoveredTeam,
       }}
     >
       {children}
