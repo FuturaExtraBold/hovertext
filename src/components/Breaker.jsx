@@ -14,15 +14,9 @@ function BreakerContent({ text }) {
   );
 }
 
-export function Breaker({
-  text,
-  animate = false,
-  direction = "l",
-  clickable = false,
-  team = null,
-}) {
-  const { config, setHideCursor, setHoveredTeam } = useApp();
-  const { textDelimiter, animationSpeed } = config;
+export function Breaker({ text, animate = false, direction = "l" }) {
+  const { config } = useApp();
+  const { animationSpeed } = config;
   const trackRef = useRef(null);
   const tweenRef = useRef(null);
 
@@ -48,24 +42,9 @@ export function Breaker({
     };
   }, [animate, direction, animationSpeed]);
 
-  const breakerClass = clickable ? "breaker clickable" : "breaker";
-
-  const hoverHandlers = clickable
-    ? {
-        onMouseEnter: () => {
-          setHideCursor(true);
-          if (team) setHoveredTeam(team);
-        },
-        onMouseLeave: () => {
-          setHideCursor(false);
-          if (team) setHoveredTeam(null);
-        },
-      }
-    : {};
-
   if (!animate) {
     return (
-      <span className={breakerClass} {...hoverHandlers}>
+      <span className="breaker">
         <BreakerContent text={text} />
       </span>
     );
@@ -74,11 +53,11 @@ export function Breaker({
   return (
     <div className="breaker-wrapper">
       <div className="breaker-track" ref={trackRef}>
-        <span className={breakerClass} {...hoverHandlers}>
+        <span className="breaker">
           <BreakerContent text={text} />
         </span>
         &nbsp;
-        <span className={breakerClass} {...hoverHandlers}>
+        <span className="breaker">
           <BreakerContent text={text} />
         </span>
       </div>

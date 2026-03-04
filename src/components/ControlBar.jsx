@@ -1,10 +1,8 @@
 import { configLabels, configRanges, fontOptions } from "../config";
 import { useApp } from "../context/AppContext";
-import { scenarios } from "../scenarios";
 
 export function ControlBar() {
-  const { config, updateConfig, scenarioKey, switchScenario, setHideCursor } =
-    useApp();
+  const { config, updateConfig, setHideCursor } = useApp();
 
   return (
     <div
@@ -12,19 +10,6 @@ export function ControlBar() {
       onMouseEnter={() => setHideCursor(true)}
       onMouseLeave={() => setHideCursor(false)}
     >
-      <label>
-        Scenario
-        <select
-          value={scenarioKey}
-          onChange={(e) => switchScenario(e.target.value)}
-        >
-          {Object.keys(scenarios).map((key) => (
-            <option key={key} value={key}>
-              {scenarios[key].name}
-            </option>
-          ))}
-        </select>
-      </label>
       <label>
         {configLabels.fontFamily}
         <select

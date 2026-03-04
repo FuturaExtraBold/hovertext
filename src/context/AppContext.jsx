@@ -1,25 +1,28 @@
 import { createContext, useContext, useState } from "react";
 import { useMousePosition } from "../hooks/useMousePosition";
-import { defaultScenario, scenarios } from "../scenarios";
+
+const defaultConfig = {
+  bgColor: 0,
+  textColor: 1,
+  textColorHover: 255,
+  radius: 300,
+  strength: 1,
+  boldness: 900,
+  lineHeight: 0.9,
+  animationSpeed: 10,
+  fontSize: 128,
+  fontFamily: "Bitter",
+};
 
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const [scenarioKey, setScenarioKey] = useState(defaultScenario);
-  const [config, setConfig] = useState(scenarios[defaultScenario].config);
+  const [config, setConfig] = useState(defaultConfig);
   const [hideCursor, setHideCursor] = useState(false);
-  const [hoveredTeam, setHoveredTeam] = useState(null);
   const mousePos = useMousePosition();
-
-  const scenario = scenarios[scenarioKey];
 
   const updateConfig = (key, value) => {
     setConfig((prev) => ({ ...prev, [key]: value }));
-  };
-
-  const switchScenario = (key) => {
-    setScenarioKey(key);
-    setConfig(scenarios[key].config);
   };
 
   return (
@@ -29,13 +32,8 @@ export function AppProvider({ children }) {
         setConfig,
         updateConfig,
         mousePos,
-        scenario,
-        scenarioKey,
-        switchScenario,
         hideCursor,
         setHideCursor,
-        hoveredTeam,
-        setHoveredTeam,
       }}
     >
       {children}

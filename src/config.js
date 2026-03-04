@@ -10,7 +10,6 @@ export const configRanges = {
   lineHeight: { min: 0.5, max: 2, step: 0.05 },
   animationSpeed: { min: 5, max: 60, step: 1 },
   fontSize: { min: 64, max: 256, step: 1 },
-  wordGap: { min: 0, max: 200, step: 1 },
 };
 
 export const configLabels = {
@@ -23,6 +22,5 @@ export const configLabels = {
   lineHeight: "Line Height",
   animationSpeed: "Speed",
   fontSize: "Font Size",
-  wordGap: "Word Gap",
   fontFamily: "Font",
 };
