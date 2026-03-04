@@ -49,7 +49,7 @@ export const Char = memo(function Char({ char }) {
       const charY = rect.top + rect.height / 2;
 
       const distance = Math.sqrt(
-        Math.pow(mouseX - charX, 2) + Math.pow(mouseY - charY, 2)
+        Math.pow(mouseX - charX, 2) + Math.pow(mouseY - charY, 2),
       );
 
       const linearProximity = 1 - Math.min(distance, cfg.radius) / cfg.radius;
@@ -57,7 +57,7 @@ export const Char = memo(function Char({ char }) {
 
       const weight = Math.round(100 + proximity * (cfg.boldness - 100));
       const colorValue = Math.round(
-        cfg.textColor + proximity * (cfg.textColorHover - cfg.textColor)
+        cfg.textColor + proximity * (cfg.textColorHover - cfg.textColor),
       );
 
       el.style.fontWeight = weight;

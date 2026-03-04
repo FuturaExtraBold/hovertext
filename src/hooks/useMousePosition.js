@@ -34,7 +34,9 @@ function startTracking() {
   };
 
   const tick = () => {
-    mouseState.subscribers.forEach((callback) => callback(mouseState.x, mouseState.y));
+    mouseState.subscribers.forEach((callback) =>
+      callback(mouseState.x, mouseState.y),
+    );
     rafId = requestAnimationFrame(tick);
   };
 

@@ -39,12 +39,10 @@ export function AppProvider({ children }) {
       uppercase,
       setUppercase,
     }),
-    [config, hideCursor, singleLine, animateLines, uppercase, updateConfig]
+    [config, hideCursor, singleLine, animateLines, uppercase, updateConfig],
   );
 
   return (
-    <AppContext.Provider value={contextValue}>
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 }

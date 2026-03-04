@@ -1,4 +1,11 @@
-export const fontOptions = ["Chivo", "Roboto", "Montserrat", "Bitter"];
+export const fontOptions = [
+  "Chivo",
+  "Roboto",
+  "Montserrat",
+  "Bitter",
+  "Ysabeau Infant",
+  "Sofia Sans Extra Condensed",
+];
 
 export const configRanges = {
   bgColor: { min: 0, max: 255, step: 1 },
