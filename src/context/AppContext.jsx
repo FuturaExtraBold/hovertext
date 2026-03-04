@@ -2,15 +2,15 @@ import { createContext, useContext, useState } from "react";
 import { useMousePosition } from "../hooks/useMousePosition";
 
 const defaultConfig = {
-  bgColor: 0,
-  textColor: 1,
-  textColorHover: 255,
-  radius: 300,
-  strength: 1,
+  bgColor: 255,
+  textColor: 200,
+  textColorHover: 0,
+  radius: 400,
+  strength: 2,
   boldness: 900,
   lineHeight: 0.9,
   animationSpeed: 10,
-  fontSize: 128,
+  fontSize: 192,
   fontFamily: "Bitter",
 };
 

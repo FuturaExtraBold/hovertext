@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useEffect, useRef } from "react";
 import { Breaker } from "./components/Breaker";
 import { ControlBar } from "./components/ControlBar";
 import { Cursor } from "./components/Cursor";
