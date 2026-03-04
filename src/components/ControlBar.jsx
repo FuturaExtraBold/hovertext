@@ -1,6 +1,6 @@
 import { configLabels, configRanges, fontOptions } from "../config";
-import { scenarios } from "../scenarios";
 import { useApp } from "../context/useApp";
+import { scenarios } from "../scenarios";
 
 export function ControlBar() {
   const {
@@ -50,15 +50,6 @@ export function ControlBar() {
         </label>
       )}
       <label>
-        Uppercase
-        <input
-          type="checkbox"
-          checked={uppercase}
-          onChange={(e) => setUppercase(e.target.checked)}
-          aria-label="Toggle uppercase text"
-        />
-      </label>
-      <label>
         {configLabels.fontFamily}
         <select
           value={config.fontFamily}
@@ -71,6 +62,15 @@ export function ControlBar() {
             </option>
           ))}
         </select>
+      </label>
+      <label>
+        Uppercase
+        <input
+          type="checkbox"
+          checked={uppercase}
+          onChange={(e) => setUppercase(e.target.checked)}
+          aria-label="Toggle uppercase text"
+        />
       </label>
       {Object.keys(configRanges).map((key) => (
         <label key={key}>

@@ -1,7 +1,7 @@
 export const scenarios = [
   {
     id: "logo-lockup",
-    name: "Logo Lockup",
+    name: "Lockup",
     config: {
       fontFamily: "Sofia Sans Extra Condensed",
     },
@@ -11,7 +11,7 @@ export const scenarios = [
   },
   {
     id: "phoenetic-alphabet",
-    name: "Phoenetic Alphabet",
+    name: "Phoenetic",
     config: {
       fontFamily: "Bitter",
     },
@@ -21,7 +21,7 @@ export const scenarios = [
   },
   {
     id: "whisper-mode",
-    name: "Whisper Mode",
+    name: "Whisper",
     config: {
       bgColor: 255,
       textColor: 255,
@@ -41,7 +41,7 @@ export const scenarios = [
   },
   {
     id: "punchy-headline",
-    name: "Punchy Headline",
+    name: "Blammo",
     config: {
       bgColor: 0,
       textColor: 80,

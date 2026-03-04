@@ -95,7 +95,7 @@ main {
 }
 
 .control-bar input[type="range"] {
-  width: 90px;
+  width: 120px;
   accent-color: #666;
 }
 
@@ -106,7 +106,7 @@ main {
 }
 
 .control-bar select {
-  width: 90px;
+  width: 120px;
   padding: 4px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
