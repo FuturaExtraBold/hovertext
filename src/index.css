@@ -106,12 +106,16 @@ main {
 }
 
 .control-bar select {
+  width: 90px;
   padding: 4px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   background: white;
   color: #333;
   font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -22,14 +22,14 @@ export const configRanges = {
 
 export const configLabels = {
   bgColor: "Background",
-  textColor: "Text",
-  textColorHover: "Text Hover",
+  textColor: "Text Color",
+  textColorHover: "Text Hover Color",
   radius: "Radius",
   strength: "Strength",
   boldness: "Boldness",
-  lineHeight: "Line Height",
+  lineHeight: "Leading",
   tracking: "Tracking",
-  animationSpeed: "Speed",
+  animationSpeed: "Animation Speed",
   fontSize: "Font Size",
-  fontFamily: "Font",
+  fontFamily: "Font Family",
 };

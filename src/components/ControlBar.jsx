@@ -1,4 +1,5 @@
 import { configLabels, configRanges, fontOptions } from "../config";
+import { scenarios } from "../scenarios";
 import { useApp } from "../context/useApp";
 
 export function ControlBar() {
@@ -7,11 +8,12 @@ export function ControlBar() {
     updateConfig,
     setHideCursor,
     singleLine,
-    setSingleLine,
     animateLines,
     setAnimateLines,
     uppercase,
     setUppercase,
+    scenarioId,
+    applyScenario,
   } = useApp();
 
   return (
@@ -23,13 +25,18 @@ export function ControlBar() {
       onMouseLeave={() => setHideCursor(false)}
     >
       <label>
-        Single Line
-        <input
-          type="checkbox"
-          checked={singleLine}
-          onChange={(e) => setSingleLine(e.target.checked)}
-          aria-label="Toggle single line mode"
-        />
+        Scenario
+        <select
+          value={scenarioId}
+          onChange={(e) => applyScenario(e.target.value)}
+          aria-label="Select scenario"
+        >
+          {scenarios.map((scenario) => (
+            <option key={scenario.id} value={scenario.id}>
+              {scenario.name}
+            </option>
+          ))}
+        </select>
       </label>
       {!singleLine && (
         <label>

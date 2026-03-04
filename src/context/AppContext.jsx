@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+import { scenarios } from "../scenarios";
 import { AppContext } from "./context";
 
 const defaultConfig = {
@@ -15,15 +16,40 @@ const defaultConfig = {
   fontFamily: "Bitter",
 };
 
+const defaultScenario = scenarios[0] ?? null;
+const defaultScenarioId = defaultScenario?.id ?? "custom";
+
 export function AppProvider({ children }) {
-  const [config, setConfig] = useState(defaultConfig);
+  const [config, setConfig] = useState(() =>
+    defaultScenario
+      ? { ...defaultConfig, ...defaultScenario.config }
+      : defaultConfig,
+  );
   const [hideCursor, setHideCursor] = useState(false);
-  const [singleLine, setSingleLine] = useState(true);
-  const [animateLines, setAnimateLines] = useState(false);
-  const [uppercase, setUppercase] = useState(true);
+  const [singleLine, setSingleLine] = useState(
+    defaultScenario ? defaultScenario.singleLine : true,
+  );
+  const [animateLines, setAnimateLines] = useState(
+    defaultScenario ? defaultScenario.animateLines : false,
+  );
+  const [uppercase, setUppercase] = useState(
+    defaultScenario ? defaultScenario.uppercase : true,
+  );
+  const [scenarioId, setScenarioId] = useState(defaultScenarioId);
 
   const updateConfig = useCallback((key, value) => {
     setConfig((prev) => ({ ...prev, [key]: value }));
+  }, []);
+
+  const applyScenario = useCallback((id) => {
+    const scenario = scenarios.find((item) => item.id === id);
+    if (!scenario) return;
+
+    setScenarioId(scenario.id);
+    setConfig({ ...defaultConfig, ...scenario.config });
+    setSingleLine(scenario.singleLine);
+    setAnimateLines(scenario.animateLines);
+    setUppercase(scenario.uppercase);
   }, []);
 
   const contextValue = useMemo(
@@ -38,8 +64,19 @@ export function AppProvider({ children }) {
       setAnimateLines,
       uppercase,
       setUppercase,
+      scenarioId,
+      applyScenario,
     }),
-    [config, hideCursor, singleLine, animateLines, uppercase, updateConfig],
+    [
+      config,
+      hideCursor,
+      singleLine,
+      animateLines,
+      uppercase,
+      updateConfig,
+      scenarioId,
+      applyScenario,
+    ],
   );
 
   return (
